@@ -5,6 +5,7 @@ import com.leogmag.bff_agendador_tarefas.business.dto.in.EnderecoDTORequest;
 import com.leogmag.bff_agendador_tarefas.business.dto.in.LoginRequestDTO;
 import com.leogmag.bff_agendador_tarefas.business.dto.in.TelefoneDTORequest;
 import com.leogmag.bff_agendador_tarefas.business.dto.in.UsuarioDTORequest;
+import com.leogmag.bff_agendador_tarefas.business.dto.out.EnderecoDTOResponse;
 import com.leogmag.bff_agendador_tarefas.business.dto.out.TelefoneDTOResponse;
 import com.leogmag.bff_agendador_tarefas.business.dto.out.UsuarioDTOResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -33,21 +34,21 @@ public interface UsuarioClient {
                                     @RequestHeader("Authorization") String token);
 
     @PutMapping("/endereco")
-    UsuarioDTOResponse atualizaEndereco(@RequestBody EnderecoDTORequest dto,
-                                @RequestParam("id") Long id,
-                                @RequestHeader("Authorization") String token);
+    EnderecoDTOResponse atualizaEndereco(@RequestBody EnderecoDTORequest dto,
+                                         @RequestParam("id") Long id,
+                                         @RequestHeader("Authorization") String token);
 
     @PutMapping("/telefone")
-    UsuarioDTOResponse atualizaTelefone(@RequestBody TelefoneDTORequest dto,
+    TelefoneDTOResponse atualizaTelefone(@RequestBody TelefoneDTORequest dto,
                                 @RequestParam("id") Long id,
                                 @RequestHeader("Authorization") String token);
 
     @PostMapping("/endereco")
-    UsuarioDTOResponse cadastraEndereco(@RequestBody EnderecoDTORequest dto,
+    EnderecoDTOResponse cadastraEndereco(@RequestBody EnderecoDTORequest dto,
                                 @RequestHeader("Authorization") String token);
 
     @PostMapping("/telefone")
-    UsuarioDTOResponse cadastraTelefone(@RequestBody TelefoneDTORequest dto,
+    TelefoneDTOResponse cadastraTelefone(@RequestBody TelefoneDTORequest dto,
                                 @RequestHeader("Authorization") String token);
 
 }
